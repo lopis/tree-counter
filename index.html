@@ -12,14 +12,13 @@
   <div id="number"></div>
 </body>
 <script>
-  fetch('https://api.ecosia.org/v1/trees/count')
-    .then(res => res.json())
-    .then(({ count, rate }) => {
-      document.getElementById('number').innerText = count
-      setInterval(() => {
-        document.getElementById('number').innerText = count
-      }, rate * 1000)
-    })
+  count = 123529423
+  time = new Date("Tue, 13 Apr 2021 18:21:47 GMT")
+  rate = 0.8
+  document.getElementById('number').innerText = count
+  setInterval(() => {
+    document.getElementById('number').innerText = count
+  }, rate * 1000)
 </script>
 
 </html>
