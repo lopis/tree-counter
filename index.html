@@ -9,16 +9,68 @@
 </head>
 
 <body>
-  <div id="number"></div>
+  <div id="counter"></div>
+  <div id="caption"> 🌳 Trees planted by Ecosia users 🌳 </div>
 </body>
 <script>
   count = 123529423
   time = new Date("Tue, 13 Apr 2021 18:21:47 GMT")
   rate = 0.8
-  document.getElementById('number').innerText = count
-  setInterval(() => {
-    document.getElementById('number').innerText = count
-  }, rate * 1000)
+  digits = []
+  $counter = document.getElementById('counter')
+  const update = () => {
+    count++
+    $counter.innerHTML = count.toString().split('').map(digit => {
+      return `<span class="digit">${digit}</span>`
+    }).join('')
+  }
+  update()
+  setInterval(update, rate * 1000)
 </script>
+<style>
+  @font-face {
+    font-family: "Courgette-Regular";
+    src: url("Courgette-Regular.ttf");
+  }
+
+  body,
+  html {
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  #counter {
+    font-family: Courgette-Regular, Arial, Helvetica, sans-serif;
+    color: #36acb8;
+    font-weight: 700;
+    font-size: 15vw;
+  }
+
+  #caption {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #353535;
+    font-size: 2vw;
+  }
+
+  .digit {
+    display: inline-block;
+    width: 0.9ch;
+  }
+
+  .digit:nth-last-child(3n+1) {
+    margin-right: 0.3ch;
+  }
+
+  .digit:nth-last-child(3n+1):not(:last-child)::after {
+    content: ',';
+  }
+</style>
 
 </html>
